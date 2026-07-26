@@ -5,7 +5,6 @@ import { RepoRow } from './RepoRow';
 import { RepoRowSkeleton } from './RepoRowSkeleton';
 
 interface RepoListProps {
-  /** null → initial load, render skeletons */
   repos: Repository[] | null;
   loading?: boolean;
   skeletonCount?: number;
@@ -20,11 +19,11 @@ export function RepoList({
 }: RepoListProps) {
   return (
     <div className={cn(
-      'border border-border transition-opacity duration-200',
+      'border border-border rounded-xl overflow-hidden transition-opacity duration-200',
       loading && repos !== null && 'opacity-40 pointer-events-none',
     )}>
-      {/* Header strip */}
-      <div className="hidden md:grid grid-cols-[24px_minmax(0,1fr)_120px_100px] gap-x-4 px-6 h-10 items-center border-b border-border bg-surface">
+      {/* Header */}
+      <div className="hidden md:grid grid-cols-[20px_minmax(0,1fr)_130px_100px] gap-x-4 px-5 h-10 items-center border-b border-border bg-surface/70">
         <span />
         <MicroLabel>repository</MicroLabel>
         <MicroLabel className="text-right">activity</MicroLabel>
@@ -36,9 +35,11 @@ export function RepoList({
           {Array.from({ length: skeletonCount }, (_, i) => <RepoRowSkeleton key={i} />)}
         </ul>
       ) : repos.length === 0 ? (
-        <p className="m-0 py-20 text-center text-[13px] text-muted-foreground">{emptyMessage}</p>
+        <div className="py-20 text-center">
+          <p className="m-0 text-[13px] text-muted-foreground">{emptyMessage}</p>
+        </div>
       ) : (
-        <ul className="m-0 p-0 list-none">
+        <ul className="m-0 p-0 list-none divide-y divide-border/60">
           {repos.map((repo, i) => <RepoRow key={repo.id} repo={repo} index={i} />)}
         </ul>
       )}

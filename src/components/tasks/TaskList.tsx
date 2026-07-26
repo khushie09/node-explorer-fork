@@ -9,14 +9,13 @@ import { Skeleton } from '../ui/Skeleton';
 function TaskRow({ task, index }: { task: ApiTask; index: number }) {
   return (
     <li
-      className="border-b border-border-inner last:border-b-0 hover:bg-hover transition-colors
-        animate-fade-up motion-reduce:animate-none"
-      style={{ animationDelay: `${index * 16}ms` }}
+      className="hover:bg-hover transition-colors animate-fade-up motion-reduce:animate-none"
+      style={{ animationDelay: `${index * 14}ms` }}
     >
       <Link
         to={`/tasks/${task.id}`}
-        className="grid grid-cols-[16px_minmax(0,1fr)_80px] md:grid-cols-[24px_minmax(0,1fr)_150px_150px_90px]
-          items-baseline gap-x-3 md:gap-x-4 px-4 sm:px-6 py-3
+        className="grid grid-cols-[14px_minmax(0,1fr)_80px] md:grid-cols-[20px_minmax(0,1fr)_150px_150px_90px]
+          items-baseline gap-x-3 md:gap-x-4 px-4 sm:px-5 py-3
           focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-warm"
       >
         <span
@@ -61,8 +60,8 @@ function TaskRow({ task, index }: { task: ApiTask; index: number }) {
 
 function TaskRowSkeleton() {
   return (
-    <li className="grid grid-cols-[16px_minmax(0,1fr)_80px] md:grid-cols-[24px_minmax(0,1fr)_150px_150px_90px]
-      items-center gap-x-3 md:gap-x-4 px-4 sm:px-6 py-3 border-b border-border-inner last:border-b-0">
+    <li className="grid grid-cols-[14px_minmax(0,1fr)_80px] md:grid-cols-[20px_minmax(0,1fr)_150px_150px_90px]
+      items-center gap-x-3 md:gap-x-4 px-4 sm:px-5 py-3 border-b border-border/60 last:border-b-0">
       <span />
       <div>
         <Skeleton className="h-4 w-64 max-w-full" />
@@ -85,10 +84,10 @@ interface TaskListProps {
 export function TaskList({ tasks, loading = false, skeletonCount = 10, emptyMessage = 'no tasks match' }: TaskListProps) {
   return (
     <div className={cn(
-      'border border-border transition-opacity duration-200',
+      'border border-border rounded-xl overflow-hidden transition-opacity duration-200',
       loading && tasks !== null && 'opacity-40 pointer-events-none',
     )}>
-      <div className="hidden md:grid grid-cols-[24px_minmax(0,1fr)_150px_150px_90px] gap-x-4 px-6 h-10 items-center border-b border-border bg-surface">
+      <div className="hidden md:grid grid-cols-[20px_minmax(0,1fr)_150px_150px_90px] gap-x-4 px-5 h-10 items-center border-b border-border bg-surface/70">
         <span />
         <MicroLabel>task</MicroLabel>
         <MicroLabel>delegator</MicroLabel>
@@ -101,9 +100,11 @@ export function TaskList({ tasks, loading = false, skeletonCount = 10, emptyMess
           {Array.from({ length: skeletonCount }, (_, i) => <TaskRowSkeleton key={i} />)}
         </ul>
       ) : tasks.length === 0 ? (
-        <p className="m-0 py-20 text-center text-[13px] text-muted-foreground">{emptyMessage}</p>
+        <div className="py-20 text-center">
+          <p className="m-0 text-[13px] text-muted-foreground">{emptyMessage}</p>
+        </div>
       ) : (
-        <ul className="m-0 p-0 list-none">
+        <ul className="m-0 p-0 list-none divide-y divide-border/60">
           {tasks.map((task, i) => <TaskRow key={task.id} task={task} index={i} />)}
         </ul>
       )}

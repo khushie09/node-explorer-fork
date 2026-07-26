@@ -16,19 +16,14 @@ interface PillProps {
 }
 
 const baseCls =
-  'inline-flex items-center gap-1.5 h-7 px-2.5 text-[10px] font-medium uppercase tracking-[0.15em] ' +
-  'border rounded-[2px] select-none transition-colors duration-150 whitespace-nowrap ' +
+  'inline-flex items-center gap-1.5 h-7 px-2.5 text-[11px] font-medium ' +
+  'border rounded-md select-none transition-all duration-150 whitespace-nowrap ' +
   'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-warm';
 
-const restCls = 'border-border text-muted-foreground';
-const interactiveCls = 'cursor-pointer hover:border-dim hover:text-foreground';
-const activeCls = 'border-warm/60 text-warm';
+const restCls = 'border-border text-muted-foreground bg-transparent';
+const interactiveCls = 'cursor-pointer hover:border-foreground/30 hover:text-foreground hover:bg-surface';
+const activeCls = 'border-warm/50 text-warm-text bg-warm/5';
 
-/**
- * Terminal-style pill: [MAIN] [PUBLIC] [CLONE].
- * Renders a <button> when onClick is set, a <Link> when `to` is set,
- * otherwise an inert <span>.
- */
 export function Pill({ children, onClick, to, active, disabled, className, ...rest }: PillProps) {
   const cls = cn(baseCls, active ? activeCls : restCls, (onClick || to) && !disabled && interactiveCls, className);
 

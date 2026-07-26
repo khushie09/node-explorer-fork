@@ -1,4 +1,5 @@
 /// <reference types="vitest/config" />
+import fs from 'fs'
 import path from 'path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -21,6 +22,17 @@ export default defineConfig({
         target: 'https://node.gitlawb.com',
         changeOrigin: true,
         secure: true,
+        bypass(req) {
+          // Serve local api/ source files directly — don't proxy them to the remote.
+          const url = req.url ?? ''
+          const candidates = [
+            path.resolve(__dirname, url.slice(1)),
+            path.resolve(__dirname, url.slice(1).replace(/\.js$/, '.ts')),
+          ]
+          if (candidates.some(p => fs.existsSync(p) && fs.statSync(p).isFile())) {
+            return url
+          }
+        },
       },
       // Node identity lives at the node's root path, which the SPA occupies locally.
       '/node-info': {

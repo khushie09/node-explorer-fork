@@ -75,9 +75,9 @@ export function RepoToolbar({
           placeholder="search repos…"
           autoComplete="off"
           spellCheck={false}
-          className="w-full h-9 px-3 text-[13px] bg-transparent border border-border rounded-[2px]
+          className="w-full h-9 px-3 text-[13px] bg-surface/50 border border-border rounded-md
             text-foreground placeholder:text-dim
-            focus:outline-none focus-visible:ring-1 focus-visible:ring-warm focus:border-dim
+            focus:outline-none focus-visible:ring-1 focus-visible:ring-warm focus:border-foreground/20
             transition-colors"
         />
         {search && searchScope === 'page' && (
@@ -97,9 +97,9 @@ export function RepoToolbar({
             id="repo-sort"
             value={sort}
             onChange={e => onSortChange(e.target.value as RepoSort)}
-            className="select-chevron h-9 pl-3 pr-7 text-[12px] bg-transparent border border-border rounded-[2px]
+            className="select-chevron h-9 pl-3 pr-7 text-[12px] bg-surface/50 border border-border rounded-md
               text-muted-foreground cursor-pointer
-              focus:outline-none focus-visible:ring-1 focus-visible:ring-warm hover:border-dim transition-colors"
+              focus:outline-none focus-visible:ring-1 focus-visible:ring-warm hover:border-foreground/20 transition-colors"
           >
             {SORT_OPTIONS.map(o => (
               <option key={o.value} value={o.value}>{o.label}</option>

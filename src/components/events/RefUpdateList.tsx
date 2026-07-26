@@ -12,11 +12,11 @@ function RefUpdateRow({ event, index }: { event: ApiRefUpdate; index: number }) 
 
   return (
     <li
-      className="grid grid-cols-[16px_minmax(0,1fr)_80px] md:grid-cols-[24px_minmax(0,1fr)_150px_120px_90px]
-        items-baseline gap-x-3 md:gap-x-4 px-4 sm:px-6 py-3
-        border-b border-border-inner last:border-b-0 hover:bg-hover transition-colors
+      className="grid grid-cols-[14px_minmax(0,1fr)_80px] md:grid-cols-[20px_minmax(0,1fr)_150px_120px_90px]
+        items-baseline gap-x-3 md:gap-x-4 px-4 sm:px-5 py-3
+        border-b border-border/60 last:border-b-0 hover:bg-hover transition-colors duration-100
         animate-fade-up motion-reduce:animate-none"
-      style={{ animationDelay: `${index * 16}ms` }}
+      style={{ animationDelay: `${index * 14}ms` }}
     >
       <span
         aria-hidden="true"
@@ -65,8 +65,8 @@ function RefUpdateRow({ event, index }: { event: ApiRefUpdate; index: number }) 
 
 function RefUpdateRowSkeleton() {
   return (
-    <li className="grid grid-cols-[16px_minmax(0,1fr)_80px] md:grid-cols-[24px_minmax(0,1fr)_150px_120px_90px]
-      items-center gap-x-3 md:gap-x-4 px-4 sm:px-6 py-3 border-b border-border-inner last:border-b-0">
+    <li className="grid grid-cols-[14px_minmax(0,1fr)_80px] md:grid-cols-[20px_minmax(0,1fr)_150px_120px_90px]
+      items-center gap-x-3 md:gap-x-4 px-4 sm:px-5 py-3 border-b border-border/60 last:border-b-0">
       <span />
       <Skeleton className="h-4 w-52 max-w-full" />
       <Skeleton className="hidden md:block h-4 w-28" />
@@ -98,7 +98,7 @@ export function RefUpdateList({
       loading && events !== null && 'opacity-40 pointer-events-none',
     )}>
       {header && (
-        <div className="hidden md:grid grid-cols-[24px_minmax(0,1fr)_150px_120px_90px] gap-x-4 px-6 h-10 items-center border-b border-border bg-surface">
+        <div className="hidden md:grid grid-cols-[20px_minmax(0,1fr)_150px_120px_90px] gap-x-4 px-5 h-10 items-center border-b border-border bg-surface/70">
           <span />
           <MicroLabel>repo · ref</MicroLabel>
           <MicroLabel>commit</MicroLabel>

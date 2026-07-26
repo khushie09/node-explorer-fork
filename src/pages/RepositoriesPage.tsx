@@ -94,8 +94,8 @@ export default function RepositoriesPage() {
         )}
 
         {error ? (
-          <div className="border border-border py-16 text-center">
-            <p className="m-0 text-[13px] text-destructive mb-4">failed to load repositories: {error}</p>
+          <div className="border border-border rounded-xl py-16 text-center">
+            <p className="m-0 text-[13px] text-destructive mb-4 font-medium">failed to load repositories: {error}</p>
             <Pill onClick={refresh}>retry</Pill>
           </div>
         ) : (

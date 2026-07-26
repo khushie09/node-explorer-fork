@@ -3,11 +3,11 @@ import { cn } from '../../lib/utils';
 
 const tabCls = ({ isActive }: { isActive: boolean }) =>
   cn(
-    'inline-flex items-center h-10 px-1 text-[13px] lowercase border-b-2 -mb-px transition-colors shrink-0',
-    'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-warm',
+    'relative inline-flex items-center h-11 px-1 text-[13px] font-medium tracking-tight border-b-2 -mb-px transition-all duration-150 shrink-0 whitespace-nowrap',
+    'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-warm rounded-sm',
     isActive
-      ? 'border-warm text-foreground font-bold'
-      : 'border-transparent text-muted-foreground hover:text-foreground',
+      ? 'border-foreground text-foreground'
+      : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border',
   );
 
 const SECTIONS = [
@@ -25,7 +25,7 @@ export function ExploreTabs() {
   return (
     <nav
       aria-label="explore"
-      className="flex gap-5 sm:gap-6 border-b border-border pt-4 overflow-x-auto scrollbar-none"
+      className="flex gap-6 border-b border-border pt-2 overflow-x-auto scrollbar-none"
     >
       {SECTIONS.map(s => (
         <NavLink key={s.to} to={s.to} end={'end' in s && s.end} className={tabCls}>

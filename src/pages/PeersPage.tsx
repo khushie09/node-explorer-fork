@@ -92,7 +92,7 @@ export default function PeersPage() {
 
         {/* P2P identity strip */}
         {p2p?.enabled && p2p.peer_id && (
-          <div className="flex items-center gap-x-4 gap-y-2 flex-wrap border border-border px-4 sm:px-6 py-3 mb-6">
+          <div className="flex items-center gap-x-4 gap-y-2 flex-wrap border border-border rounded-xl px-4 sm:px-5 py-3 mb-5 bg-surface/40">
             <span className="flex items-center gap-2">
               <span aria-hidden="true" className="text-[8px] text-ok">◆</span>
               <MicroLabel>libp2p</MicroLabel>
@@ -102,7 +102,7 @@ export default function PeersPage() {
             </span>
             <CopyButton value={p2p.peer_id} label="peer id" />
             {(p2p.topics ?? []).map(t => (
-              <span key={t} className="text-[10px] text-warm-text border border-border-inner rounded-[2px] px-1.5 py-0.5">
+              <span key={t} className="text-[10px] text-warm-text border border-border rounded-md px-2 py-0.5 bg-surface">
                 {t}
               </span>
             ))}
@@ -126,17 +126,17 @@ export default function PeersPage() {
             autoComplete="off"
             spellCheck={false}
             className={cn(
-              'w-full h-9 px-3 text-[13px] bg-transparent border border-border rounded-[2px]',
+              'w-full h-9 px-3 text-[13px] bg-surface/50 border border-border rounded-md',
               'text-foreground placeholder:text-dim',
-              'focus:outline-none focus-visible:ring-1 focus-visible:ring-warm focus:border-dim',
+              'focus:outline-none focus-visible:ring-1 focus-visible:ring-warm focus:border-foreground/20',
               'transition-colors',
             )}
           />
         </div>
 
         {error ? (
-          <div className="border border-border py-16 text-center">
-            <p className="m-0 text-[13px] text-destructive mb-4">failed to load peers: {error}</p>
+          <div className="border border-border rounded-xl py-16 text-center">
+            <p className="m-0 text-[13px] text-destructive mb-4 font-medium">failed to load peers: {error}</p>
             <Pill onClick={refresh}>retry</Pill>
           </div>
         ) : (
