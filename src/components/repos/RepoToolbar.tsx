@@ -78,7 +78,7 @@ export function RepoToolbar({
           className="w-full h-9 px-3 text-[13px] bg-surface/50 border border-border rounded-md
             text-foreground placeholder:text-dim
             focus:outline-none focus-visible:ring-1 focus-visible:ring-warm focus:border-foreground/20
-            transition-colors"
+            transition-all duration-150"
         />
         {search && searchScope === 'page' && (
           <p className="m-0 mt-1.5 text-[11px] text-dim">
@@ -97,7 +97,7 @@ export function RepoToolbar({
             id="repo-sort"
             value={sort}
             onChange={e => onSortChange(e.target.value as RepoSort)}
-            className="select-chevron h-9 pl-3 pr-7 text-[12px] bg-surface/50 border border-border rounded-md
+            className="select-chevron h-9 pl-3 pr-7 text-[12px] bg-surface border border-border rounded-md
               text-muted-foreground cursor-pointer
               focus:outline-none focus-visible:ring-1 focus-visible:ring-warm hover:border-foreground/20 transition-colors"
           >

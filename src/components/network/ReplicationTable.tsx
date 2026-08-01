@@ -21,7 +21,7 @@ export function ReplicationTable({ replication, labels, rowLimit = 12 }: Replica
   const short = (label: string) => label.split('.')[0];
 
   return (
-    <div className="border border-border">
+    <div className="border border-border rounded-xl overflow-hidden">
       <div className="flex items-center justify-between gap-3 px-4 sm:px-6 h-10 border-b border-border bg-surface">
         <MicroLabel>replication — latest ref updates across nodes</MicroLabel>
         <span className="text-[11px] tabular-nums text-muted-foreground">

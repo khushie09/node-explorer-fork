@@ -22,7 +22,7 @@ export function RepoRow({ repo, index }: RepoRowProps) {
       {...prefetch}
       className="group relative grid grid-cols-[14px_minmax(0,1fr)_auto] md:grid-cols-[20px_minmax(0,1fr)_130px_100px]
         items-start gap-x-3 md:gap-x-4 px-4 sm:px-5 py-4 md:py-4
-        hover:bg-hover transition-colors duration-100 animate-fade-up motion-reduce:animate-none"
+        hover:bg-hover transition-colors duration-150 animate-fade-up motion-reduce:animate-none"
       style={{ animationDelay: `${index * 14}ms` }}
     >
       {/* Status dot */}

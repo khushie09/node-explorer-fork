@@ -57,7 +57,7 @@ function StatusShell({ owner, name, title, message }: {
   return (
     <div className="max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-12 py-8 sm:py-12">
       <PageBreadcrumb owner={owner} name={name} />
-      <div className="flex flex-col items-center justify-center py-24 sm:py-32 text-center border border-border">
+      <div className="flex flex-col items-center justify-center py-24 sm:py-32 text-center border border-border rounded-xl">
         <span className="text-[56px] mb-8 opacity-10 select-none" aria-hidden="true">◆</span>
         <h2 className="text-[18px] font-bold mb-3 text-foreground lowercase">{title}</h2>
         <p className="m-0 text-[13px] mb-8 text-muted-foreground">{message}</p>
@@ -173,7 +173,7 @@ export default function RepositoryDetailPage() {
       <PageBreadcrumb owner={owner} name={name} />
 
       {partialError && (
-        <p className="m-0 mb-6 px-4 py-3 border border-destructive/40 text-[12px] text-destructive">
+        <p className="m-0 mb-6 px-4 py-3 border border-destructive/40 rounded-md text-[12px] text-destructive">
           {partialError} — some sections may appear empty
         </p>
       )}

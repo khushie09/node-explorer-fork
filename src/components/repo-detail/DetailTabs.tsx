@@ -306,7 +306,7 @@ export function DetailTabs({ repo, value, onValueChange, onOpenFinder }: DetailT
             <>
               <button
                 onClick={() => goToDir('')}
-                className="text-[12px] text-muted-foreground hover:text-foreground transition-colors duration-100
+                className="text-[12px] text-muted-foreground hover:text-foreground transition-colors duration-150
                   focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-warm"
               >
                 root
@@ -321,7 +321,7 @@ export function DetailTabs({ repo, value, onValueChange, onOpenFinder }: DetailT
                     ) : (
                       <button
                         onClick={() => goToDir(crumbSegments.slice(0, idx + 1).join('/'))}
-                        className="text-[12px] text-muted-foreground hover:text-foreground transition-colors duration-100
+                        className="text-[12px] text-muted-foreground hover:text-foreground transition-colors duration-150
                           focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-warm"
                       >
                         {seg}

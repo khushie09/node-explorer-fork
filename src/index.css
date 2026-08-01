@@ -71,6 +71,7 @@
   --color-ring:                 var(--color-warm);
   /* Consistent border radius */
   --radius: 0.375rem;
+  --expo-out: linear(0 0%, 0.1684 2.66%, 0.3165 5.49%, 0.446 8.52%, 0.5581 11.78%, 0.6535 15.29%, 0.7341 19.11%, 0.8011 23.3%, 0.8557 27.93%, 0.8962 32.68%, 0.9283 38.01%, 0.9529 44.08%, 0.9711 51.14%, 0.9833 59.06%, 0.9915 68.74%, 1 100%);
 }
 
 /* ── Design tokens ─────────────────────────────────────────────────────────── */
@@ -104,6 +105,7 @@
   --color-status-dot:       #d4d4d8;
   --shadow-sm:              0 1px 2px 0 rgba(0,0,0,0.05);
   --shadow-md:              0 4px 12px 0 rgba(0,0,0,0.08), 0 1px 3px 0 rgba(0,0,0,0.04);
+  --shadow-card:            0 0 0 1px rgba(0,0,0,0.04), 0 4px 16px 0 rgba(0,0,0,0.06), 0 1px 3px 0 rgba(0,0,0,0.03);
   --shadow-glow:            0 0 0 1px rgba(201,169,110,0.2), 0 4px 16px rgba(201,169,110,0.08);
 }
 
@@ -130,6 +132,7 @@
   --color-status-dot:       #333333;
   --shadow-sm:              0 1px 2px 0 rgba(0,0,0,0.3);
   --shadow-md:              0 4px 12px 0 rgba(0,0,0,0.4), 0 1px 3px 0 rgba(0,0,0,0.2);
+  --shadow-card:            0 0 0 1px rgba(255,255,255,0.04), 0 4px 16px 0 rgba(0,0,0,0.25), 0 1px 3px 0 rgba(0,0,0,0.15);
   --shadow-glow:            0 0 0 1px rgba(201,169,110,0.15), 0 4px 16px rgba(201,169,110,0.06);
 }
 
@@ -210,9 +213,10 @@ body {
   color: var(--color-muted-foreground);
 }
 
-/* Blueprint grid texture for hero panels */
+/* Blueprint grid texture with subtle warm spotlight for hero panels */
 .grid-lines {
   background-image:
+    radial-gradient(ellipse 70% 45% at 50% 0%, color-mix(in srgb, var(--color-warm) 5%, transparent) 0%, transparent 65%),
     repeating-linear-gradient(to right, var(--color-grid) 0 1px, transparent 1px 80px),
     repeating-linear-gradient(to bottom, var(--color-grid) 0 1px, transparent 1px 80px);
 }
@@ -239,6 +243,13 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg width='8' height='5' viewBox='0 0 8 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l3 3 3-3' stroke='%23888888' stroke-width='1.1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 8px center;
+}
+
+/* Native select option list — force theme colors so the dropdown
+   panel doesn't fall back to the browser's default white background */
+select option {
+  background-color: var(--color-surface);
+  color: var(--color-foreground);
 }
 
 /* ── Markdown typography (.markdown-gl) ────────────────────────────────────── */
@@ -475,5 +486,43 @@ body {
   .animate-fade-up,
   .animate-fade-in {
     animation: none;
+  }
+}
+
+@layer base {
+  ::view-transition-group(root) {
+    animation-duration: 0.7s;
+    animation-timing-function: var(--expo-out);
+  }
+  ::view-transition-new(root) {
+    animation-name: reveal-light;
+    animation-fill-mode: both;
+  }
+  ::view-transition-old(root),.dark::view-transition-old(root) {
+    animation: none;
+    animation-fill-mode: both;
+    z-index: -1;
+  }
+  .dark::view-transition-new(root) {
+    animation-name: reveal-dark;
+    animation-fill-mode: both;
+  }
+
+@keyframes reveal-dark {
+  from {
+    clip-path: polygon(50% -71%, -50% 71%, -50% 71%, 50% -71%);
+    }
+  to {
+    clip-path: polygon(50% -71%, -50% 71%, 50% 171%, 171% 50%);
+    }
+  }
+
+@keyframes reveal-light {
+  from {
+    clip-path: polygon(171% 50%, 50% 171%, 50% 171%, 171% 50%);
+    }
+  to {
+    clip-path: polygon(171% 50%, 50% 171%, -50% 71%, 50% -71%);
+    }
   }
 }

@@ -21,7 +21,7 @@ const baseCls =
   'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-warm';
 
 const restCls = 'border-border text-muted-foreground bg-transparent';
-const interactiveCls = 'cursor-pointer hover:border-foreground/30 hover:text-foreground hover:bg-surface';
+const interactiveCls = 'cursor-pointer hover:border-foreground/30 hover:text-foreground hover:bg-surface active:scale-[0.97]';
 const activeCls = 'border-warm/50 text-warm-text bg-warm/5';
 
 export function Pill({ children, onClick, to, active, disabled, className, ...rest }: PillProps) {

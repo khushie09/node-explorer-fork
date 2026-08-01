@@ -4,11 +4,11 @@ import { CopyButton } from '../ui/CopyButton';
 
 export function CertList({ items }: { items: ApiCert[] }) {
   return (
-    <ul className="m-0 p-0 list-none border border-border">
+    <ul className="m-0 p-0 list-none border border-border rounded-xl overflow-hidden">
       {items.map(cert => (
         <li
           key={cert.id}
-          className="flex items-center gap-3 flex-wrap px-4 sm:px-6 py-3.5 border-b border-border-inner last:border-b-0"
+          className="flex items-center gap-3 flex-wrap px-4 sm:px-6 py-3.5 border-b border-border-inner last:border-b-0 hover:bg-hover transition-colors duration-150"
         >
           <span className="text-[12px] tabular-nums text-warm-text">{shortSha(cert.id)}</span>
           <span className="text-[12.5px] text-foreground">{cert.ref_name}</span>

@@ -4,9 +4,9 @@ import { Pill } from '../ui/Pill';
 
 export function IssueList({ items }: { items: ApiIssue[] }) {
   return (
-    <ul className="m-0 p-0 list-none border border-border">
+    <ul className="m-0 p-0 list-none border border-border rounded-xl overflow-hidden">
       {items.map(issue => (
-        <li key={issue.id} className="px-4 sm:px-6 py-4 border-b border-border-inner last:border-b-0">
+        <li key={issue.id} className="px-4 sm:px-6 py-4 border-b border-border-inner last:border-b-0 hover:bg-hover transition-colors duration-150">
           <div className="flex items-center gap-3 flex-wrap">
             <Pill active={issue.status === 'open'}>{issue.status}</Pill>
             <span className="text-[14px] font-bold text-foreground break-words min-w-0">{issue.title}</span>

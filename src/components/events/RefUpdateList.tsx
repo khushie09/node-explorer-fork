@@ -14,7 +14,7 @@ function RefUpdateRow({ event, index }: { event: ApiRefUpdate; index: number }) 
     <li
       className="grid grid-cols-[14px_minmax(0,1fr)_80px] md:grid-cols-[20px_minmax(0,1fr)_150px_120px_90px]
         items-baseline gap-x-3 md:gap-x-4 px-4 sm:px-5 py-3
-        border-b border-border/60 last:border-b-0 hover:bg-hover transition-colors duration-100
+        border-b border-border/60 last:border-b-0 hover:bg-hover transition-colors duration-150
         animate-fade-up motion-reduce:animate-none"
       style={{ animationDelay: `${index * 14}ms` }}
     >

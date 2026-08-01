@@ -38,7 +38,7 @@ export function DetailHeader({ repo }: DetailHeaderProps) {
       )}
 
       {/* Owner/dates panel */}
-      <div className="border border-border">
+      <div className="border border-border rounded-lg overflow-hidden">
         {/* Owner row — middle-truncated for display, copy yields the full DID */}
         <div className="flex items-center gap-3 sm:gap-4 px-4 sm:px-6 py-3 sm:py-4 border-b border-border-inner">
           <MicroLabel className="w-[64px] flex-shrink-0">owner</MicroLabel>

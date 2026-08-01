@@ -22,7 +22,7 @@ export function CommitList({ commits }: CommitListProps) {
   }
 
   return (
-    <div className="overflow-hidden border border-border">
+    <div className="overflow-hidden border border-border rounded-xl">
       <Table>
         <TableHeader>
           <TableRow className="border-b border-border hover:bg-transparent">
@@ -44,7 +44,7 @@ export function CommitList({ commits }: CommitListProps) {
           {commits.map(commit => (
             <TableRow
               key={commit.hash}
-              className="border-b border-border last:border-0 hover:bg-muted/50 transition-colors duration-100 cursor-default"
+              className="border-b border-border last:border-0 hover:bg-hover transition-colors duration-150 cursor-default"
             >
               <TableCell className="px-4 sm:px-6 py-2.5 sm:py-3">
                 <span className="text-[12px] sm:text-[13px] text-warm">

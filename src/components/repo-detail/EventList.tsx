@@ -4,11 +4,11 @@ import { Pill } from '../ui/Pill';
 
 export function EventList({ items }: { items: ApiRepoEvent[] }) {
   return (
-    <ul className="m-0 p-0 list-none border border-border">
+    <ul className="m-0 p-0 list-none border border-border rounded-xl overflow-hidden">
       {items.map(event => (
         <li
           key={event.id}
-          className="flex items-center gap-3 flex-wrap px-4 sm:px-6 py-3.5 border-b border-border-inner last:border-b-0"
+          className="flex items-center gap-3 flex-wrap px-4 sm:px-6 py-3.5 border-b border-border-inner last:border-b-0 hover:bg-hover transition-colors duration-150"
         >
           <Pill>{event.type === 'local_cert' ? 'local cert' : event.type === 'gossipsub' ? 'gossip' : event.type}</Pill>
           <span className="text-[12.5px] text-foreground">{event.ref_name}</span>

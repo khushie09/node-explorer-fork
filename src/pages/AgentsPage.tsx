@@ -102,7 +102,7 @@ export default function AgentsPage() {
             className="w-full h-9 px-3 text-[13px] bg-surface/50 border border-border rounded-md
               text-foreground placeholder:text-dim
               focus:outline-none focus-visible:ring-1 focus-visible:ring-warm focus:border-foreground/20
-              transition-colors"
+              transition-all duration-150"
           />
         </div>
 

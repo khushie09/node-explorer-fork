@@ -26,7 +26,7 @@ function Cell({ label, children, sub, className = '' }: {
 
 export function StatsPanel({ stars, latestCommit, created }: StatsPanelProps) {
   return (
-    <div className="grid grid-cols-[0.9fr_1.05fr_1.05fr] border border-border">
+    <div className="grid grid-cols-[0.9fr_1.05fr_1.05fr] border border-border rounded-lg overflow-hidden">
       <Cell label="stars" sub="social proof">
         {stars}
       </Cell>

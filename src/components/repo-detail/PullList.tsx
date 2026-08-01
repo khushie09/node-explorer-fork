@@ -4,9 +4,9 @@ import { Pill } from '../ui/Pill';
 
 export function PullList({ items }: { items: ApiPull[] }) {
   return (
-    <ul className="m-0 p-0 list-none border border-border">
+    <ul className="m-0 p-0 list-none border border-border rounded-xl overflow-hidden">
       {items.map(pull => (
-        <li key={pull.id} className="px-4 sm:px-6 py-4 border-b border-border-inner last:border-b-0">
+        <li key={pull.id} className="px-4 sm:px-6 py-4 border-b border-border-inner last:border-b-0 hover:bg-hover transition-colors duration-150">
           <div className="flex items-center gap-3 flex-wrap">
             <span className="text-[12px] tabular-nums text-dim">#{pull.number}</span>
             <Pill active={pull.status === 'open'}>{pull.status}</Pill>

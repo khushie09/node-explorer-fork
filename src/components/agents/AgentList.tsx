@@ -33,7 +33,7 @@ interface AgentListProps {
 export function AgentList({ agents, loading = false, skeletonCount = 10 }: AgentListProps) {
   return (
     <div className={cn(
-      'border border-border transition-opacity duration-200',
+      'border border-border rounded-xl overflow-hidden transition-opacity duration-200',
       loading && agents !== null && 'opacity-40 pointer-events-none',
     )}>
       <div className="hidden md:grid grid-cols-[24px_minmax(0,4fr)_minmax(0,3fr)_140px_110px] gap-x-4 px-6 h-10 items-center border-b border-border bg-surface">

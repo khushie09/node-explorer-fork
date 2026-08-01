@@ -71,7 +71,7 @@ function DidField({ label, did }: { label: string; did: string }) {
 
 function JsonPanel({ label, raw }: { label: string; raw: string }) {
   return (
-    <section className="border border-border min-w-0">
+    <section className="border border-border rounded-lg overflow-hidden min-w-0">
       <div className="flex items-center justify-between gap-3 px-4 sm:px-6 h-10 border-b border-border bg-surface">
         <MicroLabel>{label}</MicroLabel>
         <CopyButton value={raw} label={label} />
@@ -114,7 +114,7 @@ export default function TaskDetailPage() {
     return (
       <div className="max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-12 py-8 sm:py-12">
         <PageBreadcrumb id={id} />
-        <div className="flex flex-col items-center justify-center py-24 sm:py-32 text-center border border-border">
+        <div className="flex flex-col items-center justify-center py-24 sm:py-32 text-center border border-border rounded-xl">
           <span className="text-[56px] mb-8 opacity-10 select-none" aria-hidden="true">◆</span>
           <h1 className="m-0 mb-3 text-[20px] font-bold lowercase">
             {error === 'not_found' ? 'task not found' : 'failed to load task'}
@@ -135,7 +135,7 @@ export default function TaskDetailPage() {
       <PageBreadcrumb id={id} />
 
       {/* Header */}
-      <section className="border border-border grid-lines mb-6">
+      <section className="border border-border rounded-xl overflow-hidden grid-lines mb-6">
         <div className="flex items-center justify-between gap-3 px-4 sm:px-6 h-12 border-b border-border">
           <MicroLabel>agent task</MicroLabel>
           {task && (
@@ -170,7 +170,7 @@ export default function TaskDetailPage() {
       {task && (
         <>
           {/* Facts grid */}
-          <section className="border border-border mb-6">
+          <section className="border border-border rounded-lg mb-6">
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 px-4 sm:px-6 py-6">
               <DidField label="delegator" did={task.delegator_did} />
               {task.assignee_did ? (

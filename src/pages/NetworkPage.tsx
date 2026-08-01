@@ -79,7 +79,7 @@ export default function NetworkPage() {
         ) : snapshots === null ? (
           <Skeleton className="h-64 w-full" />
         ) : (
-          <div className="border border-border py-12 text-center">
+          <div className="border border-border rounded-xl py-12 text-center">
             <p className="m-0 text-[13px] text-muted-foreground">
               replication analysis needs event feeds from at least two nodes
             </p>

@@ -42,7 +42,7 @@ export function FileList({ files, onClickEntry }: FileListProps) {
   }
 
   return (
-    <div className="overflow-hidden border border-border min-w-0">
+    <div className="overflow-hidden border border-border rounded-xl min-w-0">
       <Table>
         <TableHeader>
           <TableRow className="border-b border-border hover:bg-transparent">
@@ -59,7 +59,7 @@ export function FileList({ files, onClickEntry }: FileListProps) {
             <TableRow
               key={file.name}
               onClick={onClickEntry ? () => onClickEntry(file) : undefined}
-              className={`border-b border-border last:border-0 hover:bg-muted/50 transition-colors duration-100 ${onClickEntry ? 'cursor-pointer' : 'cursor-default'}`}
+              className={`border-b border-border last:border-0 hover:bg-hover transition-colors duration-150 ${onClickEntry ? 'cursor-pointer' : 'cursor-default'}`}
             >
               <TableCell className="px-4 sm:px-6 py-2.5 sm:py-3">
                 <div className="flex items-center gap-2 sm:gap-3">

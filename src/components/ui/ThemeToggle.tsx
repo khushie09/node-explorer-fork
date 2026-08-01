@@ -24,9 +24,17 @@ function MoonIcon() {
 export function ThemeToggle() {
   const { theme, toggle } = useTheme();
 
+  function handleToggle() {
+    if (!document.startViewTransition) {
+      toggle();
+      return;
+    }
+    document.startViewTransition(toggle);
+  }
+
   return (
     <button
-      onClick={toggle}
+      onClick={handleToggle}
       className="inline-flex shrink-0 items-center justify-center size-8 rounded-md
         border border-border bg-transparent text-muted-foreground
         hover:bg-surface hover:text-foreground hover:border-foreground/20

@@ -16,7 +16,7 @@ function Metric({ label, value }: { label: string; value: string }) {
 
 export function NodeCardSkeleton() {
   return (
-    <div className="border border-border">
+    <div className="border border-border rounded-lg overflow-hidden">
       <div className="flex items-center gap-2 px-4 h-10 border-b border-border bg-surface">
         <Skeleton className="h-3 w-32" />
       </div>
@@ -33,7 +33,7 @@ export function NodeCard({ snapshot }: { snapshot: NodeSnapshot }) {
   const { node, reachable, info, stats, peers, p2p } = snapshot;
 
   return (
-    <div className={cn('border border-border flex flex-col', !reachable && 'opacity-60')}>
+    <div className={cn('border border-border rounded-lg overflow-hidden flex flex-col transition-all duration-200 hover:border-foreground/10 hover:shadow-md', !reachable && 'opacity-60')}>
       <div className="flex items-center justify-between gap-2 px-4 h-10 border-b border-border bg-surface min-w-0">
         <span className="flex items-center gap-2 min-w-0">
           <span

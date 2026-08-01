@@ -42,7 +42,7 @@ export function RepoPagination({
           id="per-page"
           value={perPage}
           onChange={e => onPerPageChange(Number(e.target.value))}
-          className="select-chevron h-7 pl-2.5 pr-6 text-[11px] bg-surface/50 border border-border rounded-md
+          className="select-chevron h-7 pl-2.5 pr-6 text-[11px] bg-surface border border-border rounded-md
             text-muted-foreground cursor-pointer
             focus:outline-none focus-visible:ring-1 focus-visible:ring-warm hover:border-foreground/20 transition-colors"
         >

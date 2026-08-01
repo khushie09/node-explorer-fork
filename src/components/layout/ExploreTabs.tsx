@@ -3,7 +3,7 @@ import { cn } from '../../lib/utils';
 
 const tabCls = ({ isActive }: { isActive: boolean }) =>
   cn(
-    'relative inline-flex items-center h-11 px-1 text-[13px] font-medium tracking-tight border-b-2 -mb-px transition-all duration-150 shrink-0 whitespace-nowrap',
+    'relative inline-flex items-center h-11 px-1 text-[13px] font-medium tracking-tight border-b-2 -mb-px transition-all duration-200 shrink-0 whitespace-nowrap',
     'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-warm rounded-sm',
     isActive
       ? 'border-foreground text-foreground'

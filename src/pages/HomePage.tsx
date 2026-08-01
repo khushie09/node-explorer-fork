@@ -31,12 +31,13 @@ function StatTile({ label, value, note, to, className }: {
     <Link
       to={to}
       className={cn(
-        'block px-5 py-5 bg-surface/40 hover:bg-surface transition-all duration-150 group',
-        'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-warm',
+        'relative block px-6 py-6 bg-surface/40 hover:bg-surface transition-all duration-200 group',
+        'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-warm focus-visible:ring-inset',
         className,
       )}
     >
-      <MicroLabel className="block mb-3 group-hover:text-foreground transition-colors">{label}</MicroLabel>
+      <span aria-hidden="true" className="absolute top-3 right-3 text-[11px] text-dim opacity-0 group-hover:opacity-60 transition-opacity duration-200 select-none">→</span>
+      <MicroLabel className="block mb-3 group-hover:text-foreground transition-colors duration-200">{label}</MicroLabel>
       {value === null ? (
         <Skeleton className="h-6 w-16" />
       ) : (
@@ -49,7 +50,7 @@ function StatTile({ label, value, note, to, className }: {
 
 function PanelHeader({ label, children }: { label: string; children?: React.ReactNode }) {
   return (
-    <div className="flex items-center justify-between gap-3 px-4 sm:px-5 h-10 border-b border-border bg-surface/50">
+    <div className="flex items-center justify-between gap-3 px-4 sm:px-5 h-11 border-b border-border bg-surface/60">
       <MicroLabel>{label}</MicroLabel>
       {children}
     </div>
@@ -90,7 +91,7 @@ export default function HomePage() {
     <div className="max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-12">
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <section className="mt-8 border border-border rounded-xl overflow-hidden grid-lines">
+      <section className="mt-8 border border-border rounded-xl overflow-hidden grid-lines shadow-sm">
         <div className="flex items-center justify-between gap-3 px-4 sm:px-6 h-11 border-b border-border bg-surface/60">
           <MicroLabel>node overview</MicroLabel>
           <div className="flex items-center gap-2.5">
@@ -147,7 +148,7 @@ export default function HomePage() {
           </div>
 
           {/* Stat tiles */}
-          <div className="grid grid-cols-2 border border-border rounded-lg overflow-hidden shrink-0 w-full sm:w-[400px]">
+          <div className="grid grid-cols-2 border border-border rounded-lg overflow-hidden shrink-0 w-full sm:w-[400px] shadow-sm transition-colors duration-200 hover:border-foreground/10">
             <StatTile
               label="repositories"
               to="/repos"
@@ -186,10 +187,10 @@ export default function HomePage() {
       )}
 
       {/* ── Panels ───────────────────────────────────────────────────────── */}
-      <div className="grid lg:grid-cols-3 gap-5 pt-7 pb-20">
+      <div className="grid lg:grid-cols-3 gap-6 pt-8 pb-20">
 
         {/* Recent activity */}
-        <section className="lg:col-span-2 border border-border rounded-xl overflow-hidden self-start">
+        <section className="lg:col-span-2 border border-border rounded-xl overflow-hidden self-start shadow-sm">
           <PanelHeader label="recent activity">
             <Pill to="/events">view all →</Pill>
           </PanelHeader>
@@ -203,13 +204,13 @@ export default function HomePage() {
         <div className="flex flex-col gap-5">
 
           {/* Agent tasks */}
-          <section className="border border-border rounded-xl overflow-hidden">
+          <section className="border border-border rounded-xl overflow-hidden shadow-sm">
             <PanelHeader label="agent tasks">
               <Pill to="/tasks">view all →</Pill>
             </PanelHeader>
             <div className="grid grid-cols-4 divide-x divide-border">
               {taskCounts.map(({ status, count }) => (
-                <div key={status} className="px-3 py-4 text-center">
+                <div key={status} className="px-3 py-5 text-center">
                   <span aria-hidden="true" className={cn('block text-[7px] mb-2', taskStatusColor(status))}>◆</span>
                   <p className="m-0 text-[18px] font-bold tabular-nums leading-none text-foreground">
                     {tasks ? count : '—'}
@@ -221,8 +222,8 @@ export default function HomePage() {
             {latestTasks.length > 0 && (
               <ul className="m-0 p-0 list-none border-t border-border divide-y divide-border/60">
                 {latestTasks.map(task => (
-                  <li key={task.id} className="hover:bg-hover transition-colors">
-                    <Link to={`/tasks/${task.id}`} className="flex items-baseline gap-2.5 px-4 py-2.5 min-w-0">
+                  <li key={task.id} className="hover:bg-hover transition-colors duration-150">
+                    <Link to={`/tasks/${task.id}`} className="flex items-baseline gap-2.5 px-4 py-3 min-w-0 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-warm focus-visible:ring-inset">
                       <span aria-hidden="true" className={cn('text-[7px] shrink-0', taskStatusColor(task.status))}>◆</span>
                       <span className="text-[12px] text-foreground truncate flex-1">{taskTitle(task)}</span>
                       <span className="text-[10px] text-dim tabular-nums whitespace-nowrap">{timeAgo(task.created_at)}</span>
@@ -239,13 +240,13 @@ export default function HomePage() {
           </section>
 
           {/* P2P */}
-          <section className="border border-border rounded-xl overflow-hidden">
+          <section className="border border-border rounded-xl overflow-hidden shadow-sm">
             <PanelHeader label="p2p gossip">
               <Pill to="/network">network →</Pill>
             </PanelHeader>
-            <div className="px-4 sm:px-5 py-4 flex flex-col gap-3">
+            <div className="px-4 sm:px-5 py-5 flex flex-col gap-4">
               <div className="flex items-center gap-2.5">
-                <span aria-hidden="true" className={cn('size-1.5 rounded-full shrink-0', p2p?.enabled ? 'bg-ok' : 'bg-status-dot')} />
+                <span aria-hidden="true" className={cn('size-2 rounded-full shrink-0 transition-colors duration-300', p2p?.enabled ? 'bg-ok' : 'bg-status-dot')} />
                 <span className="text-[12.5px] text-muted-foreground">
                   {p2p ? (p2p.enabled ? 'gossip enabled' : 'gossip disabled') : loading ? 'checking…' : 'unknown'}
                 </span>
@@ -268,7 +269,7 @@ export default function HomePage() {
           </section>
 
           {/* Quick clone */}
-          <section className="border border-border rounded-xl overflow-hidden">
+          <section className="border border-border rounded-xl overflow-hidden shadow-sm">
             <PanelHeader label="quick clone" />
             {recentRepos === null ? (
               <div className="px-4 py-3 flex flex-col gap-2.5">
@@ -277,10 +278,10 @@ export default function HomePage() {
             ) : (
               <ul className="m-0 p-0 list-none divide-y divide-border/60">
                 {recentRepos.map(repo => (
-                  <li key={repo.id} className="flex items-center gap-2.5 px-4 py-2.5 min-w-0">
+                  <li key={repo.id} className="flex items-center gap-2.5 px-4 py-3 min-w-0 hover:bg-hover transition-colors duration-150">
                     <Link
                       to={`/repos/${encodeURIComponent(repo.owner_did)}/${encodeURIComponent(repo.name)}`}
-                      className="text-[12px] truncate flex-1 text-foreground hover:text-warm-text transition-colors"
+                      className="text-[12px] truncate flex-1 text-foreground hover:text-warm-text transition-colors duration-150"
                     >
                       <span className="text-dim">{shortDid(repo.owner_did)}/</span>
                       <span className="font-semibold">{repo.name}</span>
